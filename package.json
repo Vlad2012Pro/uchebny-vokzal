@@ -1,0 +1,28 @@
+{
+  "name": "uchebny-vokzal",
+  "productName": "Учебный вокзал",
+  "version": "1.0.0",
+  "description": "Конспекты по расписанию: заметки в .md-файлах в выбранной папке",
+  "main": "main.js",
+  "author": "Учебный вокзал",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^39.0.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "com.uchebnyvokzal.app",
+    "productName": "Учебный вокзал",
+    "artifactName": "UchebnyVokzal-${version}-${os}-${arch}.${ext}",
+    "files": ["main.js", "preload.js", "app/**/*", "build/icon.png"],
+    "directories": { "buildResources": "build" },
+    "win": { "target": ["nsis", "portable"], "icon": "build/icon.png" },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true },
+    "mac": { "target": ["dmg"], "icon": "build/icon.png", "category": "public.app-category.education" },
+    "linux": { "target": ["AppImage"], "icon": "build/icon.png", "category": "Education", "executableName": "uchebny-vokzal" }
+  }
+}
